@@ -3,10 +3,10 @@ title Spicetify Package Manager - Update and Restore Backup
 spicetify update 
 @echo off
 if %errorlevel% neq 0 (
-    echo Update failed. Restoring backup...
+    echo Update failed. (Check your network connection!) Restoring backup...
     spicetify restore backup
     if %errorlevel% neq 0 (
-        echo Restore failed. Please check your Spicetify installation.
+        echo Restore failed. Please check your Spicetify installation. 
         exit /b 1
     ) else (
         echo Backup restored successfully.
@@ -17,7 +17,7 @@ if %errorlevel% neq 0 (
 echo Running Spicetify Backup Apply
 spicetify backup apply
 if %errorlevel% neq 0 (
-    echo Backup apply failed. Please check your Spicetify installation.
+    echo Backup apply failed. Please check your Spicetify installation or configs.
     exit /b 1
 ) else (
     echo Backup applied successfully.
@@ -26,7 +26,7 @@ if %errorlevel% neq 0 (
 echo Applying Spicetify configuration
 spicetify apply
 if %errorlevel% neq 0 (
-    echo Apply failed. Please check your Spicetify installation.
+    echo Apply failed. Please check your Spicetify installation. Maybe the files are corrupted?
     exit /b 1
 ) else (
     echo Spicetify configuration applied successfully.
