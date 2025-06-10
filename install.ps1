@@ -4,7 +4,7 @@ if ($?) {
 } else {
     Write-Host "Failed to install Spicetify CLI."
 }
-Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/spicetify/spicetify-marketplace/main/resources/install.ps1" | Invoke-Expression
+iwr -useb https://raw.githubusercontent.com/spicetify/spicetify-marketplace/main/resources/install.ps1 | iex
 if ($?) {
     Write-Host "Spicetify Marketplace installed successfully."
 } else {
