@@ -1,37 +1,60 @@
 @echo off
-title Spicetify Package Manager - Update and Restore Backup
-spicetify update 
-@echo off
-if %errorlevel% neq 0 (
-    echo Update failed. (Check your network connection!) Restoring backup...
-    spicetify restore backup
-    if %errorlevel% neq 0 (
-        echo Restore failed. Please check your Spicetify installation. 
-        exit /b 1
-    ) else (
-        echo Backup restored successfully.
-    )
-) else (
-    echo Update completed successfully.
-)
-echo Running Spicetify Backup Apply
-spicetify backup apply
-if %errorlevel% neq 0 (
-    echo Backup apply failed. Please check your Spicetify installation or configs.
-    exit /b 1
-) else (
-    echo Backup applied successfully.
-)
-
-echo Applying Spicetify configuration
-spicetify apply
-if %errorlevel% neq 0 (
-    echo Apply failed. Please check your Spicetify installation. Maybe the files are corrupted?
-    exit /b 1
-) else (
-    echo Spicetify configuration applied successfully.
-)
+title nsprojs's Spicetify CLI Updater v2
+color 0b
+echo This updates the Spicetify CLI. Click ANY key to update.
+echo Tip: You can press CTRL + C (wait until ^C appears) to skip a phase by pressing N!
+echo ----------------------
+echo You are running this as: & whoami
+echo -----------------------
 pause
-exit /b 0
-REM End of update-restore.bat
-REM This script updates Spicetify, restores the backup if the update fails, and applies the backup.
+echo -----------------------
+echo Phase 1 (Updating)
+echo -------------------
+spicetify -n update
+echo -------------------
+echo Phase 2 (Restoring Backup)
+echo -------------------
+spicetify -n restore backup
+echo -------------------
+echo Phase 3 (Applying Backup)
+echo -------------------
+spicetify -n backup apply
+echo -------------------
+echo Phase 4 (Applying)
+echo -------------------
+spicetify -n apply
+echo -------------------
+echo Phase 5 - Finish (Restarting)
+echo -------------------
+echo The update process was finished. Press any key to apply the changes.
+echo -------------------
+pause
+echo -------------------
+spicetify -q restart
+echo .
+echo .
+echo .
+echo .
+echo .
+echo .
+echo .
+echo .
+echo .
+echo .
+echo .
+echo .
+echo .
+echo .
+echo .
+echo .
+echo .
+echo .
+color 04
+echo Spotify was restarted.
+echo -----------------------
+echo The CLI was updated, you can press any key to close the updater.
+echo Thank you for using this script.
+echo -----------------------
+pause
+
+exit()
